@@ -1,0 +1,66 @@
+﻿@model IEnumerable<GestionLocationVehicule.Areas.Admin.Models.Vehicule>
+
+@{
+    ViewData["Title"] = "Gestion des Locations";
+    Layout = "_AdminLayout";
+}
+
+<div class="page-header-container">
+    <div class="container-fluid mb-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="mb-0">Gestion des Vehicules</h1>
+            <button class="btn btn-primary">
+                <i class="bi bi-plus-lg me-2"></i> Nouvelle Vehicule
+            </button>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="table-management">
+        <div class="table-container">
+            <h3 class="mb-3">Liste des Vehicules</h3>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Matricule</th>
+                            <th>Marque</th>
+                            <th>Kilometrage</th>
+                            <th>Statut</th>
+                            <th>Categories</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+
+                        @foreach(var v in @Model)
+                        {
+                            <tr>
+                                <td>@v.Matricule</td>
+                                <td>
+                                    <div class="vehicle-info">@v.Marque</div>
+                                </td>
+                                <td>
+                                    <div class="vehicle-info">@v.Kilometrage</div>
+                                </td>
+                                <td>
+                                    <div class="vehicle-info">@v.Statut</div>
+                                </td>
+                                <td>
+                                    <div class="vehicle-info">@v.VehicleCategory.libelle</div>
+                                </td>
+                                <td>
+                                    <button class="btn btn-sm btn-outline-success" title="Modifier"><i class="bi bi-pencil-square"></i></button>
+                                    <button class="btn btn-sm btn-outline-danger" title="Delete"><i class="bi bi-trash"></i></button>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

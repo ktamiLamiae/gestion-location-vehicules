@@ -1,0 +1,492 @@
+﻿/* Définition des couleurs spécifiques */
+:root {
+    --primary-color: #007BFF; /* Bleu Principal */
+    --secondary-color: #6c757d; /* Gris pour les accents */
+    --light-bg: #f8f9fa; /* Fond clair pour les sections */
+    --dark-blue: #1b498f; /* Un bleu plus foncé si nécessaire */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: white; /* Fond blanc général */
+    color: #333;
+}
+
+/* --- Section Header et Navigation --- */
+.navbar-light {
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.navbar-brand .text-blue {
+    color: var(--dark-blue) !important; /* Logo en bleu foncé */
+    font-weight: bold;
+}
+
+.nav-link.active {
+    color: var(--primary-color) !important;
+}
+
+.btn-primary-outline {
+    color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+    .btn-primary-outline:hover {
+        background-color: var(--primary-color);
+        color: white;
+    }
+
+/* --- Hero Section (Image 1 Style) --- */
+.hero-section {
+    padding-top: 5rem;
+    padding-bottom: 0; /* Pas de padding en bas pour que les voitures soient au bord */
+    text-align: center;
+    background-color: white; /* Fond blanc */
+    position: relative;
+}
+
+    .hero-section h1 {
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 1rem;
+    }
+
+    .hero-section .text-primary {
+        color: var(--primary-color) !important; /* Couleur du texte RapidRide */
+    }
+
+    .hero-section .lead {
+        font-size: 1.25rem;
+        margin-bottom: 2rem;
+        color: #555;
+    }
+
+.hero-buttons .btn {
+    margin: 0 10px;
+    padding: 12px 30px;
+    border-radius: 5px;
+    font-weight: 500;
+}
+
+.hero-buttons .btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+.hero-buttons .btn-outline-secondary {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+}
+
+.hero-cars {
+    margin-top: 3rem;
+    position: relative;
+    z-index: 1; /* Pour être au-dessus du fond, si besoin */
+}
+
+    .hero-cars img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 0 auto;
+    }
+/* Fond de carte du monde */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+    height: 150px; /* Ajustez la hauteur du motif */
+    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path fill="%23f0f2f5" fill-opacity="1" d="M0,64L48,64C96,64,192,64,288,74.7C384,85,480,107,576,106.7C672,107,768,85,864,74.7C960,64,1056,64,1152,64C1248,64,1344,64,1392,64L1440,64Z"></path></svg>') no-repeat center bottom;
+    background-size: cover;
+    opacity: 0.5; /* Légèrement transparent */
+    z-index: 0;
+}
+
+
+/* --- Section Logos (Image 2 Style) --- */
+.logos-section {
+    background-color: var(--light-bg); /* Fond très clair */
+    padding: 2rem 0;
+}
+
+.logo-item {
+    filter: grayscale(100%); /* Logos en niveaux de gris */
+    opacity: 0.6;
+    transition: all 0.3s ease;
+    max-height: 40px; /* Taille maximale des logos */
+}
+
+    .logo-item:hover {
+        filter: grayscale(0%);
+        opacity: 1;
+    }
+
+/* --- Fast and Simple Section (with Image) --- */
+.fast-simple-section {
+    background-color: white;
+    padding: 5rem 0;
+}
+
+    .fast-simple-section h2 {
+        font-weight: bold;
+        margin-bottom: 2rem;
+        color: #333;
+    }
+
+.fast-simple-item {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 1.5rem;
+}
+
+    .fast-simple-item i {
+        font-size: 1.8rem;
+        color: var(--primary-color);
+        margin-right: 1rem;
+        flex-shrink: 0; /* Empêche l'icône de rétrécir */
+    }
+
+    .fast-simple-item h4 {
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 0.3rem;
+    }
+
+    .fast-simple-item p {
+        font-size: 0.95rem;
+        color: #666;
+    }
+
+.fast-simple-image-container {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+    height: 400px; /* Hauteur fixe pour l'image */
+    background: url('https://picsum.photos/600/400?random=1') no-repeat center center/cover; /* Image aléatoire */
+}
+
+
+/* --- Liste de Voitures (Mise à jour pour correspondre au style Image 1) --- */
+.car-list-section {
+    background-color: var(--light-bg);
+    padding: 5rem 0;
+}
+
+    .car-list-section h2 {
+        font-weight: bold;
+        margin-bottom: 2rem;
+        color: #333;
+    }
+
+.car-card {
+    background-color: white;
+    border: none; /* Pas de bordure visible */
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Ombre douce */
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    text-align: left;
+    position: relative;
+    transition: transform 0.2s ease-in-out;
+}
+
+    .car-card:hover {
+        transform: translateY(-5px);
+    }
+
+.car-placeholder {
+    height: 120px;
+    background-color: #e9ecef; /* Gris clair */
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #adb5bd;
+    font-size: 0.9rem;
+}
+
+.car-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline; /* Alignement du texte au bas de la ligne */
+    margin-bottom: 0.5rem;
+}
+
+    .car-info-header h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        margin-bottom: 0;
+        color: #333;
+    }
+
+    .car-info-header .car-price {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--primary-color);
+    }
+
+.car-subtitle {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 1rem;
+}
+
+.car-features {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    color: #555;
+    margin-bottom: 1.5rem;
+}
+
+    .car-features span {
+        display: flex;
+        align-items: center;
+    }
+
+    .car-features i {
+        color: var(--primary-color);
+        margin-right: 5px;
+    }
+
+.btn-details {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    width: 100%;
+    padding: 10px 0;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: background-color 0.3s;
+}
+
+    .btn-details:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+
+
+/* --- CTA Footer (conserve le style bleu foncé) --- */
+.cta-footer {
+    background-color: var(--primary-color); /* Bleu foncé pour le CTA */
+    color: white;
+    padding: 4rem 0;
+    border-radius: 10px;
+    margin-top: 5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+    .cta-footer .car-icon {
+        position: absolute;
+        right: 50px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 8rem;
+        color: rgba(255, 255, 255, 0.2);
+        opacity: 0.7; /* Légèrement plus visible */
+    }
+
+    .cta-footer h2 {
+        font-weight: bold;
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .cta-footer p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+    }
+
+    .cta-footer .btn {
+        background-color: var(--secondary-color); /* Bouton jaune/orange */
+        border-color: var(--secondary-color);
+        color: var(--primary-color); /* Texte du bouton en bleu */
+        font-weight: bold;
+        padding: 12px 30px;
+        border-radius: 5px;
+    }
+
+    .cta-footer .btn-outline-light {
+        color: white;
+        border-color: white;
+        background-color: transparent;
+    }
+
+        .cta-footer .btn-outline-light:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }
+
+/* --- Footer --- */
+.main-footer {
+    background-color: white;
+    padding: 4rem 0 2rem;
+    border-top: 1px solid #eee;
+}
+
+.footer-logo {
+    font-size: 1.8rem;
+    font-weight: bold;
+    color: var(--dark-blue);
+    margin-bottom: 1rem;
+}
+
+.footer-socials a {
+    color: #777;
+    font-size: 1.5rem;
+    margin-right: 15px;
+    transition: color 0.3s;
+}
+
+    .footer-socials a:hover {
+        color: var(--primary-color);
+    }
+
+.footer-list h6 {
+    color: var(--dark-blue);
+    font-weight: bold;
+    margin-bottom: 1.2rem;
+}
+
+.footer-list ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-list li a {
+    color: #777;
+    text-decoration: none;
+    margin-bottom: 0.5rem;
+    display: block;
+    font-size: 0.95rem;
+    transition: color 0.3s;
+}
+
+    .footer-list li a:hover {
+        color: var(--primary-color);
+    }
+
+.app-download img {
+    max-width: 140px;
+    height: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.copyright {
+    font-size: 0.85rem;
+    color: #888;
+    margin-top: 3rem;
+    border-top: 1px solid #eee;
+    padding-top: 1.5rem;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+    .hero-section h1 {
+        font-size: 2.8rem;
+    }
+
+    .hero-section .lead {
+        font-size: 1.1rem;
+    }
+
+    .hero-buttons .btn {
+        padding: 10px 20px;
+    }
+
+    .hero-cars {
+        margin-top: 2rem;
+    }
+
+    .hero-section::after {
+        height: 100px;
+    }
+    /* Moins haut sur mobile */
+}
+
+@media (max-width: 768px) {
+    .hero-section h1 {
+        font-size: 2rem;
+    }
+
+    .hero-section .lead {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+        .hero-buttons .btn {
+            margin: 5px 0;
+            width: 80%;
+            max-width: 250px;
+        }
+
+    .hero-cars {
+        margin-top: 1rem;
+    }
+
+    .logos-section .col-4, .logos-section .col-3 {
+        flex: 0 0 50%;
+        max-width: 50%;
+        margin-bottom: 1rem;
+    }
+
+    .fast-simple-section .col-lg-6 {
+        margin-bottom: 2rem;
+    }
+
+    .fast-simple-item {
+        margin-bottom: 1rem;
+    }
+
+    .fast-simple-image-container {
+        height: 300px;
+    }
+
+    .car-card {
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-footer {
+        text-align: center;
+        padding: 3rem 0;
+    }
+
+        .cta-footer .car-icon {
+            display: none;
+        }
+
+        .cta-footer p {
+            max-width: 100%;
+        }
+
+    .footer-list {
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+
+    .footer-socials {
+        justify-content: center;
+        margin-bottom: 1.5rem;
+    }
+
+    .app-download {
+        align-items: center !important;
+    }
+}

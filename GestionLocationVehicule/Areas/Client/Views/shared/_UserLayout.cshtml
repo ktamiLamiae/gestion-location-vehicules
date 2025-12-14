@@ -1,0 +1,26 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewData["Title"] - RapidRide Car Rental</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="~/css/home.css" />
+</head>
+<body>
+    <div class="container-fluid">
+        @* <partial name="_Navbar" /> *@
+        @await Html.PartialAsync("_Navbar")
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+
+        @* <partial name="_Footer" /> *@
+        @await Html.PartialAsync("_Footer")
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
