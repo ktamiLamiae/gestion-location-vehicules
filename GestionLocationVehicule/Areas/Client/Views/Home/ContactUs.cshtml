@@ -1,0 +1,89 @@
+﻿@{
+    ViewData["Title"] = "Contact-Us";
+    Layout = "_UserLayout";
+}
+<section class="contact-hero-section pt-5 pb-4 bg-light-bg">
+    <div class="container text-center">
+        <h3 class="display-4 fw-bold mb-3">
+            Nous Contacter
+        </h3>
+        <p class="lead text-secondary-color">
+            Que vous ayez une question, une suggestion ou besoin d'assistance, notre équipe est là pour vous aider 24/7.
+        </p>
+    </div>
+</section>
+
+<section class="contact-form-info py-5">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-lg-7 mb-4 mb-lg-0">
+                <div class="contact-form-card p-4 p-md-5 shadow-sm">
+                    <h3 class="fw-bold mb-4">Envoyez-nous un Message</h3>
+                    <form action="#" method="POST">
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">Prénom <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="firstName" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Nom <span class="text-danger">*</span></label>
+                                <input type="text" class="form-control" id="lastName" required>
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Adresse E-mail <span class="text-danger">*</span></label>
+                            <input type="email" class="form-control" id="email" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="subject" class="form-label">Sujet <span class="text-danger">*</span></label>
+                            <input type="text" class="form-control" id="subject">
+                        </div>
+                        <div class="mb-4">
+                            <label for="message" class="form-label">Message</label>
+                            <textarea class="form-control" id="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary-color btn-lg w-100">
+                            Envoyer le Message <i class="fas fa-paper-plane ms-2"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="info-details-card p-4 h-100">
+                    <h3 class="fw-bold mb-4">Nos Coordonnées</h3>
+
+                    <div class="info-item mb-4">
+                        <i class="fas fa-map-marker-alt fa-2x text-primary-color me-3"></i>
+                        <div>
+                            <p class="fw-bold mb-0 info">Siège Social</p>
+                            <p class="text-secondary-color mb-0">Boulevard Bir Anzarane Casablanca, Maroc</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item mb-4">
+                        <i class="fas fa-phone fa-2x text-primary-color me-3"></i>
+                        <div>
+                            <p class="fw-bold mb-0 info">Téléphone</p>
+                            <p class="text-secondary-color mb-0">(+212) 562148968</p>
+                        </div>
+                    </div>
+
+                    <div class="info-item mb-4">
+                        <i class="fas fa-envelope fa-2x text-primary-color me-3"></i>
+                        <div>
+                            <p class="fw-bold mb-0 info">E-mail</p>
+                            <p class="text-secondary-color mb-0">support@rapidride.com</p>
+                        </div>
+                    </div>
+
+                    <div class="map-placeholder mt-4">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3323.868650524788!2d-7.643490824504484!3d33.58275947333735!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xda7d2c27dc7e333%3A0x107105473fba298b!2sBoulevard%20Bir%20Anzarane%2C%20Casablanca!5e0!3m2!1sen!2sma!4v1765937046618!5m2!1sen!2sma" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>

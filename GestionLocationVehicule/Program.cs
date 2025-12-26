@@ -1,4 +1,6 @@
 using GestionLocationVehicule.Areas.Admin.Data;
+using GestionLocationVehicule.Areas.Client.Data;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc.ViewEngines;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,9 +10,16 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+var cc = builder.Configuration.GetConnectionString("DefaultConnection");
+
 builder.Services.AddDbContext<ApplicationDbContext>(
     options => options.UseMySql(
-    builder.Configuration.GetConnectionString("DefaultConnection"),
+    cc,
+        new MySqlServerVersion(new Version(8, 0, 36)))
+);
+builder.Services.AddDbContext<ApplicationClientDbContext>(
+    options => options.UseMySql(
+    cc,
         new MySqlServerVersion(new Version(8, 0, 36)))
 );
 
@@ -31,26 +40,17 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-//app.MapControllerRoute(
-//    name: "default",
-//    pattern: "{controller=Home}/{action=Index}/{id?}");
+
+
 app.MapControllerRoute(
     name: "default",
-    pattern: "{area=Client}/{controller=User}/{action=Index}/{id?}"
+    pattern: "{area=Client}/{controller=Home}/{action=Index}"
 );
 
-app.MapControllerRoute(
-    name: "areas",
-    pattern: "{area:exists}/{controller=Locations}/{action=Index}/{id?}"
-);
-
-app.MapControllerRoute(
-    name: "areas",
-    pattern: "{area:exists}/{controller=Vehicules}/{action=Index}"
-);
-
-
-
+//app.MapControllerRoute(
+//    name: "ContactUs",
+//    pattern: "{area=Client}/{controller=ContactUs}/{action=Index}"
+//);
 
 app.Run();
 

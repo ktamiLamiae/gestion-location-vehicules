@@ -1,36 +1,23 @@
-﻿using GestionLocationVehicule.Areas.Admin.Enums;
+﻿using GestionLocationVehicule.Areas.Client.Enums;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Runtime.CompilerServices;
 
-namespace GestionLocationVehicule.Areas.Admin.Models
+namespace GestionLocationVehicule.Areas.Client.Models
 {
     public class Vehicule
     {
-        [Key]
         public int Id { get; set; }
-        [Required, MaxLength(100)]
         public string Titre { get; set; }
-        [MaxLength(500)]
         public string? Description { get; set; }
-        [Required, MaxLength(20)]
         public string Matricule { get; set; }
-        [Required, MaxLength(20)]
         public string Marque { get; set; }
-        [Required, MaxLength(20)]
         public string Modele { get; set; }
         public int? Kilometrage { get; set; }
-        [Required]
         public Statut Statut { get; set; }
         public string ImagePath { get; set; } = "";
-        public DateTime CreatedAt { get; set; } = DateTime.Now;
-        public DateTime? UpdatedAt { get; set; }
-        [Required, Precision(10, 2)]
         public decimal Prix { get; set; }
-        [Required]
         public int Annee { get; set; }
-        [Required]
-        public int VehicleCategoryId { get; set; }
         public VehicleCategory VehicleCategory { get; set; }
 
     }

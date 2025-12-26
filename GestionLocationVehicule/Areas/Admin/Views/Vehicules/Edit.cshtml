@@ -1,0 +1,203 @@
+﻿@model GestionLocationVehicule.Areas.Admin.Models.VehiculeFormModel
+@{
+    ViewData["Title"] = "Modifier un Véhicule";
+    Layout = "_AdminLayout";
+}
+@* @if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+} *@
+
+<div class="page-header-container">
+    <div class="container-fluid mb-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="mb-0">@ViewData["Title"]</h1>
+            <a class="btn btn-secondary" asp-controller="Vehicules" asp-area="Admin" asp-action="Index">
+                <i class="bi bi-arrow-left-circle me-2"></i> Retour à la Liste
+            </a>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="card shadow-sm">
+        <div class="card-header">
+            <h3 class="card-title">Modifier un Véhicule</h3>
+        </div>
+        <div class="card-body">
+            @if (ViewBag.ErrorMessage != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @ViewBag.ErrorMessage
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+                </div>
+            }
+
+            @if (ViewBag.success != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @ViewBag.success
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+                </div>
+            }
+
+            <form asp-action="Update" enctype="multipart/form-data" method="post">
+                <input type="hidden" asp-for="Id" />
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            Titre <span class="text-danger">*</span>
+                        </label>
+                        <input asp-for="Titre" class="form-control" placeholder="Ex : Porsche 911 Carrera 2022" />
+                        <span asp-validation-for="Titre" class="text-danger"></span>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Description</label>
+                        <textarea asp-for="Description" class="form-control" rows="1" placeholder="Description du véhicule, options, état, etc..."></textarea>
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="row mb-3">
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label">
+                                Matricule <span class="text-danger">*</span>
+                            </label>
+                            @* <input name="Matricule" class="form-control" readonly value="@Model.Matricule" /> *@
+                            <input asp-for="Matricule" class="form-control" readonly />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label">
+                                Marque <span class="text-danger">*</span>
+                            </label>
+                            @* <input name="Marque" class="form-control" value="@Model.Marque" /> *@
+                            <input asp-for="Marque" class="form-control" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label">
+                                Modèle <span class="text-danger">*</span>
+                            </label>
+                            @* <input name="Modele" class="form-control" value="@Model.Modele" /> *@
+                            <input asp-for="Modele" class="form-control"/>
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="form-group">
+                            <label class="form-label">
+                                Année <span class="text-danger">*</span>
+                            </label>
+                            @* <input type="number" name="Annee" class="form-control" value="@Model.Annee" /> *@
+                            <input asp-for="Annee" class="form-control" type="number" step="0.5" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label">
+                                Kilométrage
+                            </label>
+                            @* <input name="Kilometrage" type="number" class="form-control" value="@Model.Kilometrage" /> *@
+                            <input asp-for="Kilometrage" class="form-control" type="number" step="0.01" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label">
+                                Prix <span class="text-danger">*</span>
+                            </label>
+                            @* <input name="Prix" type="number" step="0.01" class="form-control" value="@Model.Prix" />  *@
+                            <input asp-for="Prix" class="form-control" type="number" step="0.01" />
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label">
+                                Statut <span class="text-danger">*</span>
+                            </label>
+                            <select asp-for="Statut" class="form-select">
+                                <option value="0">Disponible</option>
+                                <option value="1">Loué</option>
+                                <option value="2">Maintenance</option>
+                            </select>
+
+                            <span asp-validation-for="Statut" class="text-danger"></span>
+
+                            <span class="text-danger"></span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row mb-4">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label class="form-label">
+                                Catégorie <span class="text-danger">*</span>
+                            </label>
+
+                            <select name="VehicleCategoryId" class="form-select">
+                                <option value="">-- Sélectionnez une Catégorie --</option>
+                                @if (ViewBag.VehicleCategories != null)
+                                {
+                                    foreach (var category in ViewBag.VehicleCategories)
+                                    {
+                                        <option value="@category.Id" selected="@(Model.VehicleCategoryId == category.Id)">
+                                            @category.libelle
+                                        </option>
+                                    }
+                                }
+                            </select>
+                            <span class="text-danger"></span>
+                        </div>
+                    </div> 
+                    @* <div>
+                        <img src="@ViewData["ImageFile"]" class="img-thumbnail" width="150" />
+                    </div> *@
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <label class="form-label" for="ImageFile">
+                                Image du Véhicule
+                            </label>
+                            @* <input type="file" id="ImageFile" name="ImageFile" class="form-control" /> *@
+                            
+                            <input asp-for="ImageFile" type="file" class="form-control" />
+                            <span asp-validation-for="ImageFile" class="text-danger"></span>
+                            @if (!string.IsNullOrEmpty(Model.ImagePath))
+                            {
+                                <div class="mb-2 mt-2">
+                                    <img src="@Model.ImagePath" class="img-thumbnail" width="150"
+                                         alt="@Model.Marque" onerror="this.onerror=null; this.src='/images/admin/vehicules/img.png';" />
+                                </div>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-end mt-4">
+                    <button type="submit" class="btn btn-success">
+                        <i class="bi bi-save me-2"></i> Modifier
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

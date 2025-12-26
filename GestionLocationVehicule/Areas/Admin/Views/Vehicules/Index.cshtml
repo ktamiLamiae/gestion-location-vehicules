@@ -1,4 +1,4 @@
-﻿@model IEnumerable<GestionLocationVehicule.Areas.Admin.Models.Vehicule>
+﻿@model List<GestionLocationVehicule.Areas.Admin.Models.Vehicule>
 
 @{
     ViewData["Title"] = "Gestion des Locations";
@@ -9,9 +9,9 @@
     <div class="container-fluid mb-3">
         <div class="d-flex justify-content-between align-items-center">
             <h1 class="mb-0">Gestion des Vehicules</h1>
-            <button class="btn btn-primary">
+            <a class="btn btn-primary" asp-controller="Vehicules" asp-area="Admin" asp-action="Create">
                 <i class="bi bi-plus-lg me-2"></i> Nouvelle Vehicule
-            </button>
+            </a>
         </div>
     </div>
 </div>
@@ -25,36 +25,43 @@
                 <table class="table table-hover align-middle">
                     <thead>
                         <tr>
+                            <th>Image</th>
+                            <th>Titre</th>
                             <th>Matricule</th>
-                            <th>Marque</th>
-                            <th>Kilometrage</th>
-                            <th>Statut</th>
-                            <th>Categories</th>
+                            <th>Marque / Année</th>
+                            <th>Prix</th>
+                            <th>Catégorie</th>
                             <th>Actions</th>
                         </tr>
                     </thead>
                     <tbody>
-                        
-
-                        @foreach(var v in @Model)
+                        @foreach (var v in Model)
                         {
                             <tr>
+                                <td>
+                                    <img src="@v.ImagePath" width="100" alt="@v.Marque" onerror="this.onerror=null; this.src='/images/admin/vehicules/img.png';" />
+                                </td>
+                                <td>@v.Titre</td>
                                 <td>@v.Matricule</td>
+                                <td>@v.Marque - @v.Annee</td>
+                                <td>@v.Prix.ToString("N2") DH</td>
+                                <td>@v.VehicleCategory?.libelle</td>
                                 <td>
-                                    <div class="vehicle-info">@v.Marque</div>
-                                </td>
-                                <td>
-                                    <div class="vehicle-info">@v.Kilometrage</div>
-                                </td>
-                                <td>
-                                    <div class="vehicle-info">@v.Statut</div>
-                                </td>
-                                <td>
-                                    <div class="vehicle-info">@v.VehicleCategory.libelle</div>
-                                </td>
-                                <td>
-                                    <button class="btn btn-sm btn-outline-success" title="Modifier"><i class="bi bi-pencil-square"></i></button>
-                                    <button class="btn btn-sm btn-outline-danger" title="Delete"><i class="bi bi-trash"></i></button>
+                                    <a class="btn btn-sm btn-outline-primary" title="Details" asp-controller="Vehicules" asp-area="Admin" asp-action="Details" asp-route-id="@v.Id">
+                                        <i class="bi bi-eye"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-outline-success" title="Modifier" asp-controller="Vehicules" asp-area="Admin" asp-action="Edit" asp-route-id="@v.Id">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+
+                                    @* <a class="btn btn-sm btn-outline-danger" title="Supprimer" asp-controller="Vehicules" asp-area="Admin" asp-action="Delete" asp-route-id="@v.Id" onclick="return confirm('Voulez-vous vraiment supprimer ?')">
+                                        <i class="bi bi-trash"></i>
+                                    </a> *@
+                                    <form asp-controller="Vehicules" asp-area="Admin" asp-action="Delete" asp-route-id="@v.Id" method="post" style="display:inline">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger" title="Supprimer" onclick="return confirm('Voulez-vous vraiment supprimer ?')">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form>
                                 </td>
                             </tr>
                         }

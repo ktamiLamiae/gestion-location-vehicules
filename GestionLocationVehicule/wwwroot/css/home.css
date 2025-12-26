@@ -12,6 +12,10 @@ body {
     color: #333;
 }
 
+.container-fluid {
+    padding-left: 0;
+    padding-right: 0;
+}
 /* --- Section Header et Navigation --- */
 .navbar-light {
     background-color: white;
@@ -39,7 +43,7 @@ body {
 
 /* --- Hero Section (Image 1 Style) --- */
 .hero-section {
-    padding-top: 5rem;
+    padding-top: 3rem;
     padding-bottom: 0; /* Pas de padding en bas pour que les voitures soient au bord */
     text-align: center;
     background-color: white; /* Fond blanc */
@@ -76,7 +80,7 @@ body {
 }
 
 .hero-buttons .btn-outline-secondary {
-    color: var(--secondary-color);
+    /*    color: var(--secondary-color);*/
     border-color: var(--secondary-color);
 }
 
@@ -90,6 +94,7 @@ body {
         max-width: 100%;
         height: auto;
         display: block;
+        display: block;
         margin: 0 auto;
     }
 /* Fond de carte du monde */
@@ -101,7 +106,7 @@ body {
     transform: translateX(-50%);
     width: 100%;
     height: 150px; /* Ajustez la hauteur du motif */
-    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path fill="%23f0f2f5" fill-opacity="1" d="M0,64L48,64C96,64,192,64,288,74.7C384,85,480,107,576,106.7C672,107,768,85,864,74.7C960,64,1056,64,1152,64C1248,64,1344,64,1392,64L1440,64Z"></path></svg>') no-repeat center bottom;
+    /*    background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 100"><path fill="%23f0f2f5" fill-opacity="1" d="M0,64L48,64C96,64,192,64,288,74.7C384,85,480,107,576,106.7C672,107,768,85,864,74.7C960,64,1056,64,1152,64C1248,64,1344,64,1392,64L1440,64Z"></path></svg>') no-repeat center bottom;*/
     background-size: cover;
     opacity: 0.5; /* Légèrement transparent */
     z-index: 0;
@@ -129,7 +134,7 @@ body {
 /* --- Fast and Simple Section (with Image) --- */
 .fast-simple-section {
     background-color: white;
-    padding: 5rem 0;
+    padding: 3rem 0;
 }
 
     .fast-simple-section h2 {
@@ -168,14 +173,13 @@ body {
     overflow: hidden;
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
     height: 400px; /* Hauteur fixe pour l'image */
-    background: url('https://picsum.photos/600/400?random=1') no-repeat center center/cover; /* Image aléatoire */
 }
 
 
 /* --- Liste de Voitures (Mise à jour pour correspondre au style Image 1) --- */
 .car-list-section {
     background-color: var(--light-bg);
-    padding: 5rem 0;
+    padding: 3rem 0;
 }
 
     .car-list-section h2 {
@@ -201,7 +205,7 @@ body {
     }
 
 .car-placeholder {
-    height: 120px;
+    height: 200px;
     background-color: #e9ecef; /* Gris clair */
     border-radius: 8px;
     margin-bottom: 1rem;
@@ -210,6 +214,13 @@ body {
     justify-content: center;
     color: #adb5bd;
     font-size: 0.9rem;
+    overflow: hidden;
+}
+
+.car-image {
+    width: 100%;
+    height: 100%;
+    object-position: center;
 }
 
 .car-info-header {
@@ -268,128 +279,11 @@ body {
 }
 
     .btn-details:hover {
-        background-color: #0056b3;
-        border-color: #0056b3;
-    }
-
-
-/* --- CTA Footer (conserve le style bleu foncé) --- */
-.cta-footer {
-    background-color: var(--primary-color); /* Bleu foncé pour le CTA */
-    color: white;
-    padding: 4rem 0;
-    border-radius: 10px;
-    margin-top: 5rem;
-    position: relative;
-    overflow: hidden;
-}
-
-    .cta-footer .car-icon {
-        position: absolute;
-        right: 50px;
-        top: 50%;
-        transform: translateY(-50%);
-        font-size: 8rem;
-        color: rgba(255, 255, 255, 0.2);
-        opacity: 0.7; /* Légèrement plus visible */
-    }
-
-    .cta-footer h2 {
-        font-weight: bold;
-        font-size: 2.2rem;
-        margin-bottom: 1rem;
-    }
-
-    .cta-footer p {
-        font-size: 1.1rem;
-        margin-bottom: 2rem;
-        max-width: 600px;
-    }
-
-    .cta-footer .btn {
-        background-color: var(--secondary-color); /* Bouton jaune/orange */
-        border-color: var(--secondary-color);
-        color: var(--primary-color); /* Texte du bouton en bleu */
-        font-weight: bold;
-        padding: 12px 30px;
-        border-radius: 5px;
-    }
-
-    .cta-footer .btn-outline-light {
-        color: white;
+        background-color: #2e8df2;
         border-color: white;
-        background-color: transparent;
+        color: white;
     }
 
-        .cta-footer .btn-outline-light:hover {
-            background-color: white;
-            color: var(--primary-color);
-        }
-
-/* --- Footer --- */
-.main-footer {
-    background-color: white;
-    padding: 4rem 0 2rem;
-    border-top: 1px solid #eee;
-}
-
-.footer-logo {
-    font-size: 1.8rem;
-    font-weight: bold;
-    color: var(--dark-blue);
-    margin-bottom: 1rem;
-}
-
-.footer-socials a {
-    color: #777;
-    font-size: 1.5rem;
-    margin-right: 15px;
-    transition: color 0.3s;
-}
-
-    .footer-socials a:hover {
-        color: var(--primary-color);
-    }
-
-.footer-list h6 {
-    color: var(--dark-blue);
-    font-weight: bold;
-    margin-bottom: 1.2rem;
-}
-
-.footer-list ul {
-    list-style: none;
-    padding: 0;
-}
-
-.footer-list li a {
-    color: #777;
-    text-decoration: none;
-    margin-bottom: 0.5rem;
-    display: block;
-    font-size: 0.95rem;
-    transition: color 0.3s;
-}
-
-    .footer-list li a:hover {
-        color: var(--primary-color);
-    }
-
-.app-download img {
-    max-width: 140px;
-    height: auto;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.copyright {
-    font-size: 0.85rem;
-    color: #888;
-    margin-top: 3rem;
-    border-top: 1px solid #eee;
-    padding-top: 1.5rem;
-}
 
 
 /* Responsive adjustments */
@@ -462,31 +356,570 @@ body {
     .car-card {
         margin-bottom: 1.5rem;
     }
+}
+/*//aboutUs*/
+/* --- Couleurs personnalisées basées sur les variables racines --- */
+/* Ces classes facilitent l'application des couleurs primaires/secondaires partout */
+.text-primary-color {
+    color: var(--primary-color) !important;
+}
 
-    .cta-footer {
-        text-align: center;
-        padding: 3rem 0;
+.text-secondary-color {
+    color: var(--secondary-color) !important;
+}
+
+.bg-light-bg {
+    background-color: var(--light-bg) !important;
+}
+
+.text-dark-blue {
+    color: var(--dark-blue) !important;
+}
+
+/* Styles pour les boutons basés sur les variables */
+.btn-primary-color {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+    .btn-primary-color:hover {
+        background-color: #0069d9; /* L'équivalent un peu plus foncé de #007BFF */
+        border-color: #0069d9;
+        color: white;
     }
 
-        .cta-footer .car-icon {
-            display: none;
-        }
+.btn-outline-secondary-color {
+    color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    background-color: transparent;
+    transition: background-color 0.3s, color 0.3s;
+}
 
-        .cta-footer p {
-            max-width: 100%;
-        }
-
-    .footer-list {
-        text-align: center;
-        margin-bottom: 2rem;
+    .btn-outline-secondary-color:hover {
+        background-color: var(--secondary-color);
+        color: white;
     }
 
-    .footer-socials {
-        justify-content: center;
-        margin-bottom: 1.5rem;
+
+/* --- Section Hero (about-hero-section) --- */
+.about-hero-section {
+    background-color: white;
+}
+
+.about-hero-image-placeholder {
+    height: 400px;
+    background-color: var(--light-bg); /* Fond clair */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-color);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Ombre douce */
+    border: 1px solid #ddd;
+}
+
+/* Styles pour les icônes de la liste dans le Hero (flotte moderne, support) */
+.about-hero-section .d-flex i {
+    font-size: 2.2rem; /* Légèrement plus grand pour un meilleur impact */
+    margin-top: 5px;
+}
+
+
+/* --- Section Mission et Valeurs (mission-vision-section) --- */
+.mission-vision-section {
+    background-color: var(--light-bg);
+}
+
+.value-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08); /* Ombre cohérente */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-bottom: 4px solid transparent; /* Bordure non visible par défaut */
+}
+
+    .value-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        border-bottom-color: var(--primary-color); /* Met en évidence au survol */
     }
 
-    .app-download {
-        align-items: center !important;
+    .value-card i {
+        /* Taille des icônes des valeurs (fa-bolt, fa-shield-alt, fa-star) */
+        font-size: 3.5rem;
+    }
+
+
+/* --- Section CTA Footer (cta-footer-about) --- */
+/* Utilise le style bleu défini pour le CTA de la page d'accueil */
+.cta-footer-about {
+    background-color: var(--primary-color); /* Bleu principal */
+    color: white;
+    padding: 3rem 0;
+    /* Assurez-vous qu'il n'y ait pas de marge en haut ou en bas si vous voulez qu'il s'étende */
+}
+
+    .cta-footer-about .btn-light {
+        color: var(--primary-color); /* Texte bleu sur fond blanc */
+        font-weight: bold;
+        padding: 10px 30px;
+    }
+
+/* --- Responsive adjustments --- */
+@media (max-width: 768px) {
+    .about-hero-image-placeholder {
+        display: none; /* Cache l'image sur les petits écrans pour économiser de l'espace */
+    }
+
+    .about-hero-section .d-flex {
+        text-align: left;
     }
 }
+
+/* --- Styles de base et utilitaires (Répétés pour garantir l'application) --- */
+/*
+:root {
+    --primary-color: #007BFF;
+    --secondary-color: #6c757d;
+    --light-bg: #f8f9fa;
+    --dark-blue: #1b498f;
+}
+*/
+
+.text-primary-color {
+    color: var(--primary-color) !important;
+}
+
+.text-secondary-color {
+    color: var(--secondary-color) !important;
+}
+
+.bg-light-bg {
+    background-color: var(--light-bg) !important;
+}
+
+.text-dark-blue {
+    color: var(--dark-blue) !important;
+}
+
+.btn-primary-color {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+    color: white;
+}
+
+    .btn-primary-color:hover {
+        background-color: #0069d9;
+        border-color: #0069d9;
+        color: white;
+    }
+
+
+/* --- Section Hero du Contact --- */
+.contact-hero-section {
+    background-color: var(--light-bg); /* Fond très clair */
+}
+
+    .contact-hero-section h3 {
+        color: var(--primary-color);
+    }
+
+
+/* --- Section Formulaire et Infos (contact-form-info) --- */
+
+/* Style du conteneur de formulaire */
+.contact-form-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1); /* Ombre prononcée pour le formulaire */
+    height: 100%; /* S'assurer qu'il prend toute la hauteur disponible dans la colonne */
+}
+
+    /* Style des champs de formulaire */
+    .contact-form-card .form-control {
+        border-radius: 5px;
+        padding: 10px 15px;
+        border: 1px solid #ced4da;
+        transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    }
+
+        .contact-form-card .form-control:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 0.25rem rgba(0, 123, 255, 0.25); /* Anneau de focus bleu clair */
+        }
+
+    .contact-form-card h3 {
+        color: var(--primary-color);
+    }
+/* Style du conteneur d'informations */
+.info-details-card {
+    background-color: var(--light-bg); /* Fond légèrement gris pour le bloc d'informations */
+    border-radius: 10px;
+    padding: 2rem;
+    height: 100%; /* Occuper la même hauteur que le formulaire */
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+    .info-details-card h3, .info-details-card .info {
+        color: var(--primary-color);
+    }
+/* Style pour chaque élément d'information (adresse, tel, email) */
+.info-item {
+    display: flex;
+    align-items: flex-start;
+}
+
+    .info-item i {
+        flex-shrink: 0; /* Empêche l'icône de bouger ou rétrécir */
+        font-size: 1.8rem;
+        margin-top: 2px;
+    }
+
+    .info-item p {
+        line-height: 1.4;
+    }
+
+/* Style pour le placeholder de la carte (Google Maps) */
+.map-placeholder {
+    height: 250px;
+    background-color: #e9ecef; /* Gris clair */
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #adb5bd;
+    font-size: 0.9rem;
+    overflow: hidden;
+    border: 1px solid #ddd;
+}
+
+/* --- Styles pour les Cartes de la Liste (car-list-section) --- */
+
+.car-list-section {
+    padding: 2rem 0;
+    background-color: var(--secondary-bg);
+}
+
+.car-card {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: var(--card-shadow);
+    margin-bottom: 2rem;
+    padding: 1.5rem;
+    text-align: left;
+    transition: transform 0.2s ease-in-out;
+    height: 100%; /* S'assure que toutes les cartes ont la même hauteur dans la grille */
+}
+
+    .car-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+    }
+
+.car-placeholder {
+    height: 200px;
+    background-color: #e9ecef;
+    border-radius: 8px;
+    margin-bottom: 1rem;
+    overflow: hidden;
+}
+
+.car-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Assure que l'image couvre le conteneur */
+    object-position: center;
+}
+
+.car-info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+    .car-info-header h5 {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: #333;
+        margin: 0;
+    }
+
+    .car-info-header .car-price {
+        font-size: 1.3rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        white-space: nowrap; /* Empêche le prix de s'enrouler */
+    }
+
+.car-features {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap; /* Permet aux éléments de passer à la ligne si nécessaire */
+    padding: 0.5rem 0 1rem;
+    color: #6c757d;
+}
+
+    .car-features span {
+        font-size: 0.9rem;
+    }
+
+    .car-features i {
+        margin-right: 0.4rem;
+    }
+
+.btn-details {
+    display: block;
+    width: 100%;
+    text-align: center;
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background-color: var(--primary-color);
+    color: white;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background-color 0.2s;
+}
+
+    .btn-details:hover {
+        background-color: #0056b3; /* Un bleu légèrement plus foncé */
+        color: white;
+    }
+
+
+/* --- Styles pour la Page de Détails (car-details-section) --- */
+
+.car-details-section {
+    padding: 3rem 0;
+    background-color: var(--secondary-bg);
+}
+
+.car-details-card {
+    background-color: white;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    padding: 2.5rem;
+    margin-bottom: 2rem;
+}
+
+.car-title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #333;
+}
+
+.car-subtitle {
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+.car-image-container {
+    height: 400px;
+    overflow: hidden;
+    border-radius: 10px;
+    margin-bottom: 1.5rem;
+    background-color: #e9ecef;
+}
+
+.car-details-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.car-details-section-box {
+    padding: 1.5rem 0;
+    border-top: 1px solid #eee;
+}
+
+    .car-details-section-box h4 {
+        color: var(--primary-color);
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+
+.details-specs strong {
+    font-weight: 600;
+    color: #333;
+}
+
+.reservation-card {
+    padding: 2rem;
+}
+
+.price-big {
+    font-size: 3rem;
+    font-weight: bolder;
+    color: var(--primary-color);
+}
+
+.status-badge .badge {
+    padding: 0.75em 1.25em;
+    font-size: 1rem;
+}
+
+.key-features li {
+    font-size: 1rem;
+    color: #555;
+}
+
+    .key-features li i {
+        color: var(--primary-color);
+    }
+
+/* Règle pour garder la carte de réservation visible en haut */
+.sticky-top {
+    position: sticky;
+    top: 20px;
+}
+
+/* Surcharge des boutons Bootstrap pour utiliser la variable primaire */
+.btn-primary {
+    background-color: var(--primary-color);
+    border-color: var(--primary-color);
+}
+
+    .btn-primary:hover {
+        background-color: #0056b3;
+        border-color: #0056b3;
+    }
+/* --- Modern Simple Footer --- */
+.main-footer {
+    background-color: #ffffff;
+    padding: 3rem 0 1.5rem;
+    border-top: 1px solid #f1f1f1;
+    color: #666;
+    clear: both; /* S'assure que le footer se place bien après le contenu */
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 2rem;
+}
+
+.footer-logo {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--dark-blue); /* Utilise ta variable existante */
+    text-decoration: none;
+    letter-spacing: -0.5px;
+    display: inline-block;
+}
+
+.footer-brand p {
+    margin-bottom: 0;
+}
+
+.footer-nav {
+    display: flex;
+    gap: 1.5rem;
+}
+
+    .footer-nav a {
+        color: #666;
+        text-decoration: none;
+        font-size: 0.9rem;
+        font-weight: 500;
+        transition: color 0.2s;
+    }
+
+        .footer-nav a:hover {
+            color: var(--primary-color); /* Utilise ta variable bleue */
+        }
+
+.footer-socials {
+    display: flex;
+    gap: 1.2rem;
+}
+
+    .footer-socials a {
+        color: #999;
+        font-size: 1.2rem;
+        transition: transform 0.2s, color 0.2s;
+    }
+
+        .footer-socials a:hover {
+            color: var(--primary-color);
+            transform: translateY(-2px);
+        }
+
+.footer-bottom {
+    margin-top: 2.5rem;
+    padding-top: 1.5rem;
+    border-top: 1px solid #f8f8f8;
+    text-align: center;
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+/* Ajustements Mobile */
+@media (max-width: 768px) {
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .footer-nav {
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+    }
+}
+
+/* --- CTA Footer (conserve le style bleu foncé) --- */
+.cta-footer {
+    background-color: var(--primary-color); /* Bleu foncé pour le CTA */
+    color: white;
+    padding: 4rem 0;
+    border-radius: 10px;
+    margin-top: 5rem;
+    position: relative;
+    overflow: hidden;
+}
+
+    .cta-footer .car-icon {
+        position: absolute;
+        right: 50px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 8rem;
+        color: rgba(255, 255, 255, 0.2);
+        opacity: 0.7; /* Légèrement plus visible */
+    }
+
+    .cta-footer h2 {
+        font-weight: bold;
+        font-size: 2.2rem;
+        margin-bottom: 1rem;
+    }
+
+    .cta-footer p {
+        font-size: 1.1rem;
+        margin-bottom: 2rem;
+        max-width: 600px;
+    }
+
+    .cta-footer .btn {
+        background-color: White; /* Bouton jaune/orange */
+        border-color: White;
+        color: var(--primary-color); /* Texte du bouton en bleu */
+        font-weight: bold;
+        padding: 10px 15px;
+        border-radius: 5px;
+    }
+
+    .cta-footer .btn-outline-light {
+        color: white;
+        border-color: white;
+        background-color: transparent;
+    }
+
+        .cta-footer .btn-outline-light:hover {
+            background-color: white;
+            color: var(--primary-color);
+        }

@@ -1,0 +1,77 @@
+﻿@model GestionLocationVehicule.Areas.Admin.Models.Vehicule
+@{
+    ViewData["Title"] = "Details de " + Model.Marque + " " + Model.Modele;
+    Layout = "_AdminLayout";
+}
+
+<div class="container mt-5 mb-5">
+    <div class="row align-items-center mb-4">
+        <div class="col-9">
+            <div>
+                <h1 class="text-primary mb-0">@Model.Titre</h1>
+                <p class="lead text-muted mb-0">Informations détaillées et spécifications techniques</p>
+            </div>
+        </div>
+
+        <div class="col-3 text-end">
+            <a class="btn btn-secondary" asp-controller="Vehicules" asp-area="Admin" asp-action="Index">
+                <i class="bi bi-arrow-left-circle me-2"></i> Retour à la Liste
+            </a>
+        </div>
+
+    </div>
+    <hr class="mb-4">
+
+    <div class="row">
+
+        <div class="col-md-5 mb-4">
+            <div class="card shadow-lg">
+                <img src="@Model.ImagePath" class="card-img-top" alt="@Model.Matricule">
+                <div class="card-body">
+                    <h5 class="card-title">Description</h5>
+                    <p class="card-text">
+                        @Model.Description
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-7 mb-4">
+            <div class="card h-100 shadow-sm">
+                <div class="card-header bg-light">
+                    <h5 class="mb-0"><i class="bi bi-list-stars me-2"></i>@Model.Titre</h5>
+                </div>
+                <div class="card-body">
+                    <dl class="row">
+
+                        <dt class="col-sm-4 text-muted">Marque</dt>
+                        <dd class="col-sm-8">@Model.Marque</dd>
+
+                        <dt class="col-sm-4 text-muted">Modele</dt>
+                        <dd class="col-sm-8">@Model.Modele</dd>
+
+                        <dt class="col-sm-4 text-muted">Année</dt>
+                        <dd class="col-sm-8">@Model.Annee</dd>
+
+                        <dt class="col-sm-4 text-muted">Kilométrage</dt>
+                        <dd class="col-sm-8">@Model.Kilometrage km</dd>
+
+                        <hr class="my-3">
+
+                        <dt class="col-sm-4 text-muted">Status</dt>
+                        <dd class="col-sm-8">@Model.Statut</dd>
+
+                        <dt class="col-sm-4 text-muted">Prix</dt>
+                        <dd class="col-sm-8">@Model.Prix DH</dd>
+
+                        <dt class="col-sm-4 text-muted">Category</dt>
+                        <dd class="col-sm-8">@Model.VehicleCategory?.libelle</dd>
+
+                        @* <dt class="col-sm-4 text-muted">Description</dt>
+                        <dd class="col-sm-8">@Model.Description</dd> *@
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

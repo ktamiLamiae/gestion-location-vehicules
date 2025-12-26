@@ -7,6 +7,11 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="~/css/admin.css" />
+    <link rel="stylesheet" href="~/css/clientcss.css" />
+    <link rel="stylesheet" href="~/css/editclientcss.css" />
+    <link rel="stylesheet" href="~/css/detailsclientcss.css" />
+    <link rel="stylesheet" href="~/css/deleteclientcss.css" />
+    <link rel="stylesheet" href="~/css/indexcliencss.css" />
 </head>
 <body>
 
@@ -19,10 +24,13 @@
                 <a class="nav-link" asp-area="Admin" asp-controller="Dashboard" asp-action="Index"><i class="bi bi-speedometer2 me-2"></i> Tableau de bord</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" asp-area="Admin" asp-controller="Users" asp-action="Index"><i class="bi bi-person-fill me-2"></i> Utilisateurs</a>
+                <a class="nav-link" asp-area="Admin" asp-controller="Clients" asp-action="Index"><i class="bi bi-person-fill me-2"></i> Utilisateurs</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" asp-area="Admin" asp-controller="Vehicles" asp-action="Index"><i class="bi bi-truck me-2"></i> Véhicules</a>
+                <a class="nav-link" asp-area="Admin" asp-controller="Vehicules" asp-action="Index"><i class="bi bi-car-front-fill me-2"></i> Véhicules</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" asp-controller="Reservations" asp-area="Admin" asp-action="ListReservations"><i class="bi bi-calendar-check me-2"></i> Réservations</a>
             </li>
         </ul>
     </nav>

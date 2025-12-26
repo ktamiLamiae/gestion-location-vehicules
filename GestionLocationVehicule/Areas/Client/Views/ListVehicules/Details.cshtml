@@ -1,0 +1,105 @@
+﻿@model GestionLocationVehicule.Areas.Client.Models.Vehicule;
+@{
+    ViewData["Title"] = "Details";
+    Layout = "_UserLayout";
+}
+<section class="car-details-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-7 mb-4">
+                <div class="car-details-card main-info-card">
+
+                    <div class="car-details-header mb-4">
+                        <h1 class="car-title">@Model.Marque - @Model.Modele</h1>
+                        <p class="car-subtitle">@Model.VehicleCategory?.libelle</p>
+                    </div>
+
+                    <div class="car-image-container mb-4">
+                        <img class="car-details-image"
+                             src="@Model.ImagePath"
+                             onerror="this.onerror=null; this.src='/images/admin/vehicules/img-details-default.png';"
+                             alt="Image de @Model.Marque @Model.Modele" />
+                    </div>
+
+                    <div class="car-details-section-box">
+                        <h4 class="mb-3"><i class="bi bi-info-circle-fill me-2"></i> Description du Véhicule</h4>
+                        <p>@Model.Description</p>
+                        @if (string.IsNullOrWhiteSpace(Model.Description))
+                        {
+                            <p class="text-muted">Aucune description détaillée n'est disponible pour ce véhicule.</p>
+                        }
+                    </div>
+
+                    <div class="car-details-section-box">
+                        <h4 class="mb-3"><i class="bi bi-gear-fill me-2"></i> Spécifications Techniques</h4>
+                        <div class="row details-specs">
+                            <div class="col-sm-6 mb-3">
+                                <strong>Année:</strong> @Model.Annee
+                            </div>
+                            <div class="col-sm-6 mb-3">
+                                <strong>Kilométrage:</strong> @Model.Kilometrage km
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-5">
+                <div class="car-details-card reservation-card sticky-top">
+                    <div class="text-center mb-4">
+                        <span class="price-big">@Model.Prix DH</span>
+                        <small class="text-muted d-block">/ jour</small>
+                    </div>
+
+                    <div class="status-badge mb-4 text-center">
+                        @{
+                            string statusClass = string.Empty;
+                            string statusText = string.Empty;
+                            switch ((int)@Model.Statut)
+                            {
+                                case 0: statusClass = "bg-success"; statusText = "Disponible"; break;
+                                case 1: statusClass = "bg-danger"; statusText = "Loué"; break;
+                                default: statusClass = "bg-warning text-dark"; statusText = "Maintenance"; break;
+                            }
+                        }
+                        <span class="badge @statusClass">
+                            <i class="bi bi-calendar-check me-1"></i> Statut: @statusText
+                        </span>
+                    </div>
+
+                    @if ((int)@Model.Statut == 0)
+                    {
+                        <div class="mb-4">
+                            <h5 class="mb-3"><i class="bi bi-calendar-plus me-2"></i> Réserver</h5>
+                            <form asp-area="Client" asp-controller="Reservation" asp-action="Create" asp-route-vehiculeId="@Model.Id">
+                                <div class="mb-3">
+                                    <label for="dateDebut" class="form-label">Date de Début</label>
+                                    <input type="date" class="form-control" id="dateDebut" required>
+                                </div>
+                                <div class="mb-3">
+                                    <label for="dateFin" class="form-label">Date de Fin</label>
+                                    <input type="date" class="form-control" id="dateFin" required>
+                                </div>
+                                <button type="submit" class="btn btn-primary w-100 btn-lg">Réserver Maintenant</button>
+                            </form>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="alert alert-warning text-center" role="alert">
+                            Ce véhicule n'est pas disponible actuellement à la location.
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center mt-5">
+            <a class="btn btn-outline-secondary" asp-area="Client" asp-controller="ListVehicules" asp-action="Index">
+                <i class="bi bi-arrow-left me-2"></i> Retour à la liste des véhicules
+            </a>
+        </div>
+
+    </div>
+</section>

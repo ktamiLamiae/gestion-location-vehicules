@@ -1,0 +1,52 @@
+﻿<section class="car-list-section">
+    <div class="container">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Choisissez la voiture qui vous convient</h2>
+
+            <a class="text-primary text-decoration-none fw-bold" asp-area="Client" asp-controller="ListVehicules" asp-action="Index">
+                Voir tout <i class="bi bi-arrow-right"></i>
+            </a>
+        </div>
+
+        <div class="row">
+            @foreach (var v in Model)
+            {
+                <div class="col-lg-4 col-md-6">
+                    <div class="car-card">
+
+                        <div class="car-placeholder">
+                            <img class="car-image" src="@v.ImagePath" />
+                        </div>
+                        <div class="car-info-header">
+                            <div>
+                                <h5>@v.Marque</h5>
+                            </div>
+                            <span class="car-price">@v.Prix DH<small class="text-muted">/jour</small></span>
+                        </div>
+                        <div class="car-features">
+                            <span><i class="bi bi-car-front-fill me-2"></i> @v.VehicleCategory?.libelle</span>
+                            @{
+                                string className = string.Empty;
+
+                                switch ((int)@v.Statut)
+                                {
+                                    case 0:
+                                        className = "bi bi-check-circle-fill text-success";
+                                        break;
+                                    case 1:
+                                        className = "bi bi-x-circle-fill text-danger";
+                                        break;
+                                    default:
+                                        className = "bi bi-tools text-warning";
+                                        break;
+                                }
+                            }
+                            <span><i class="@className"></i> @v.Statut</span>
+                        </div>
+                        <a class="btn btn-details" asp-area="Client" asp-controller="ListVehicules" asp-action="Details" asp-route-id="@v.Id"> Voir les détails </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>

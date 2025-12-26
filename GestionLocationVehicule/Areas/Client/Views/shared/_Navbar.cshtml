@@ -2,62 +2,62 @@
     <div class="container">
         <a class="navbar-brand text-blue fw-bold"
            asp-area="Client"
-           asp-controller="User"
+           asp-controller="Home"
            asp-action="Index">
-            <i class="bi bi-car-front-fill me-2"></i>RapidRide
+            <i class="bi bi-car-front-fill me-2 text-primary"></i>RapidRide
         </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarNav" aria-controls="navbarNav"
+                aria-expanded="false" aria-label="Basculer la navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item">
-                    <a class="nav-link active" aria-current="page"
+                    <a class="nav-link active"
                        asp-area="Client"
-                       asp-controller="User"
+                       asp-controller="Home"
                        asp-action="Index">
-                        Home
+                        Accueil
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link"
                        asp-area="Client"
-                       asp-controller="User"
-                       asp-action="Vehicles">
-                        Vehicles
+                       asp-controller="ListVehicules"
+                       asp-action="Index">
+                        Véhicules
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link"
                        asp-area="Client"
-                       asp-controller="User"
-                       asp-action="Details">
-                        Details
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link"
-                       asp-area="Client"
-                       asp-controller="User"
+                       asp-controller="Home"
                        asp-action="AboutUs">
-                        About Us
+                        À propos
                     </a>
                 </li>
+
                 <li class="nav-item">
                     <a class="nav-link"
                        asp-area="Client"
-                       asp-controller="User"
+                       asp-controller="Home"
                        asp-action="ContactUs">
-                        Contact Us
+                        Contact
                     </a>
                 </li>
             </ul>
+
             <div class="d-flex">
                 <a class="btn btn-primary-outline btn-sm ms-lg-3"
                    asp-area="Client"
                    asp-controller="User"
                    asp-action="Login">
-                    Sign In
+                    Connexion
                 </a>
             </div>
         </div>

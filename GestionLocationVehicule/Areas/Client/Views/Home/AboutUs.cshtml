@@ -1,0 +1,98 @@
+﻿@{
+    ViewData["Title"] = "À propos de RapidRide";
+    Layout = "_UserLayout";
+}
+
+<section class="py-5 bg-white">
+    <div class="container">
+        <div class="row align-items-center g-4">
+
+            <div class="col-lg-6 d-none d-lg-block order-lg-2">
+                <img src="/images/client/img-head.jpg"
+                     class="img-fluid"
+                     alt="Location de voiture">
+            </div>
+
+            <div class="col-lg-6 order-lg-1">
+                <h1 class="fw-bold display-5 mb-3">
+                    Louez votre voiture simplement avec
+                    <span class="text-primary-color">RapidRide</span>
+                </h1>
+
+                <p class="lead text-secondary-color mb-4">
+                    RapidRide est une application simple de location de véhicules.
+                    Choisissez une voiture, sélectionnez vos dates et réservez en quelques clics.
+                </p>
+
+                <ul class="list-unstyled row mb-4">
+                    <li class="col-md-6 mb-2">
+                        <i class="fas fa-calendar-check me-2 text-primary-color"></i>
+                        Réservation rapide
+                    </li>
+                    <li class="col-md-6 mb-2">
+                        <i class="fas fa-car me-2 text-primary-color"></i>
+                        Véhicules bien entretenus
+                    </li>
+                    <li class="col-md-6 mb-2">
+                        <i class="fas fa-wallet me-2 text-primary-color"></i>
+                        Prix clairs
+                    </li>
+                    <li class="col-md-6 mb-2">
+                        <i class="fas fa-headset me-2 text-primary-color"></i>
+                        Assistance disponible
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<section class="py-5 bg-light-bg">
+    <div class="container">
+        <h2 class="text-center fw-bold mb-5">
+            Pourquoi RapidRide ?
+        </h2>
+
+        <div class="row text-center">
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-mobile-alt fa-3x text-primary-color mb-3"></i>
+                <h5 class="fw-bold">Simple à utiliser</h5>
+                <p class="text-secondary-color">
+                    Une interface claire pour réserver rapidement.
+                </p>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-car-side fa-3x text-primary-color mb-3"></i>
+                <h5 class="fw-bold">Choix varié</h5>
+                <p class="text-secondary-color">
+                    Citadine, berline ou SUV selon vos besoins.
+                </p>
+            </div>
+
+            <div class="col-md-4 mb-4">
+                <i class="fas fa-check-circle fa-3x text-primary-color mb-3"></i>
+                <h5 class="fw-bold">Service fiable</h5>
+                <p class="text-secondary-color">
+                    Des véhicules prêts à rouler en toute sécurité.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="py-5 text-center" style="background-color: var(--primary-color);">
+    <div class="container">
+        <h3 class="text-white fw-bold mb-3">
+            Prêt à réserver ?
+        </h3>
+        <p class="text-white-50 mb-4">
+            Trouvez votre voiture et démarrez votre trajet dès maintenant.
+        </p>
+        <a asp-area="Client" asp-controller="ListVehicules" asp-action="Index" class="btn btn-light btn-lg fw-bold">
+            Réserver une voiture
+        </a>
+    </div>
+</section>

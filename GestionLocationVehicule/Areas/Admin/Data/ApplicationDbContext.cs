@@ -11,5 +11,8 @@ namespace GestionLocationVehicule.Areas.Admin.Data
         public DbSet<Vehicule> Vehicules { get; set; }
         public DbSet<VehicleCategory> VehicleCategories { get; set; }
 
+        public DbSet<Reservation> Reservations { get; set; }
+        public DbSet<Clients> Clients { get; set; }
+
     }
 }

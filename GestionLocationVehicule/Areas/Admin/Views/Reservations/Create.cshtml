@@ -1,0 +1,124 @@
+﻿@using GestionLocationVehicule.Areas.Admin.Enums
+@{
+    ViewData["Title"] = "Ajouter une réservation";
+    Layout = "_AdminLayout";
+}
+@* @if (!ViewData.ModelState.IsValid)
+{
+    <div class="alert alert-danger">
+        <ul>
+            @foreach (var error in ViewData.ModelState.Values.SelectMany(v => v.Errors))
+            {
+                <li>@error.ErrorMessage</li>
+            }
+        </ul>
+    </div>
+} *@
+<div class="page-header-container">
+    <div class="container-fluid mb-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="mb-0">@ViewData["Title"]</h1>
+            <a class="btn btn-secondary" asp-controller="Reservations" asp-area="Admin" asp-action="ListReservations">
+                <i class="bi bi-arrow-left-circle me-2"></i> Retour à la Liste
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            @if (ViewBag.ErrMessage != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    @ViewBag.ErrMessage
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+                </div>
+            }
+
+            @if (ViewBag.success != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    @ViewBag.success
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fermer"></button>
+                </div>
+            }
+            <form asp-controller="Reservations" asp-area="Admin" asp-action="ConfirmReseration" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <label class="form-label">Client <span class="text-danger">*</span></label>
+                        <select name="ClientId" class="form-select" required>
+                            <option value="">-- Sélectionnez un Client --</option>
+                            @if (ViewBag.clients != null)
+                            {
+                                foreach (var client in ViewBag.Clients)
+                                {
+                                    <option value="@client.IdClient">@client.Nom @client.Prenom</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <label class="form-label">Véhicule <span class="text-danger">*</span></label>
+                        <select name="VehiculeId" class="form-select" required>
+                            <option value="">-- Sélectionnez un véhicule --</option>
+                            @if (ViewBag.vehicules != null)
+                            {
+                                foreach (var v in ViewBag.Vehicules)
+                                {
+                                    <option value="@v.Id">@v.Titre</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <label class="form-label">Date de début <span class="text-danger">*</span></label>
+                        <input type="date" name="startDate" class="form-control" required />
+                    </div>
+                </div>
+
+                <div class="row mb-3">
+                    <div class="col-12">
+                        <label class="form-label">Date de fin <span class="text-danger">*</span></label>
+                        <input type="date" name="endDate" class="form-control" required />
+                    </div>
+                </div>
+
+                @* <div class="row mb-3">
+                    <div class="col-12">
+                        <label class="form-label">Prix Total <span class="text-danger">*</span></label>
+                        <div class="input-group">
+                            <input type="number" step="0.01" name="prix" class="form-control" placeholder="0.00" required />
+                            <span class="input-group-text">DH</span>
+                        </div>
+                    </div>
+                </div> *@
+
+                <div class="row mb-4">
+                    <div class="col-12">
+                        <label class="form-label">Statut de la réservation <span class="text-danger">*</span></label>
+                        <select name="Statut" class="form-select" required>
+                            <option value="@ReservationStatut.Reserved">Confirmée (Réservée)</option>
+                            <option value="@ReservationStatut.Cancelled">Annulée</option>
+                            <option value="@ReservationStatut.Completed">Terminée</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save me-2"></i> Enregistrer
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

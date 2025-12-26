@@ -1,11 +1,12 @@
-﻿@{
+﻿@model List<GestionLocationVehicule.Areas.Client.Models.Vehicule>
+@{
     ViewData["Title"] = "Home";
     Layout = "_UserLayout";
 }
-<div class="container-fluid">
+<div class="container-fluid" >
     @await Html.PartialAsync("Partials/_HeroSection")
     @await Html.PartialAsync("Partials/_LogosSection")
     @await Html.PartialAsync("Partials/_FastSimpleSection")
-    @await Html.PartialAsync("Partials/_CarListSection")
+    @await Html.PartialAsync("Partials/_CarListSection",Model.Take(6))
     @await Html.PartialAsync("Partials/_CtaFooter")
 </div>

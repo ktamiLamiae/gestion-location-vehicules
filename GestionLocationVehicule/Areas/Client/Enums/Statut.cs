@@ -1,4 +1,4 @@
-﻿namespace GestionLocationVehicule.Areas.Admin.Enums
+﻿namespace GestionLocationVehicule.Areas.Client.Enums
 {
     public enum Statut
     {

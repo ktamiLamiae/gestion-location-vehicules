@@ -1,0 +1,33 @@
+﻿<section class="hero-section">
+    <div class="container">
+        <h1 class="mb-3">
+            Location de véhicules simple et rapide <br />
+            avec <span class="text-primary">RapidRide</span>
+        </h1>
+
+        <p class="lead text-muted">
+            Trouvez le véhicule idéal pour vos déplacements en quelques clics,
+            au meilleur prix et en toute simplicité.
+        </p>
+
+        <div class="hero-buttons">
+            <a class="btn btn-primary"
+               asp-area="Client"
+               asp-controller="ListVehicules"
+               asp-action="Index">
+                <i class="bi bi-car-front-fill me-2"></i>Voir tous les véhicules
+            </a>
+
+            <a class="btn btn-outline-secondary"
+               asp-area="Client"
+               asp-controller="Home"
+               asp-action="ContactUs">
+                <i class="bi bi-headset me-2"></i>Nous contacter
+            </a>
+        </div>
+
+        <div class="hero-cars">
+            <img src="images/client/hero-group.png" alt="Différents véhicules en location">
+        </div>
+    </div>
+</section>

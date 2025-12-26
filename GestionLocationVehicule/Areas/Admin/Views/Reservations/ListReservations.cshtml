@@ -1,0 +1,70 @@
+﻿@model List<GestionLocationVehicule.Areas.Admin.Models.Reservation>
+
+@{
+    ViewData["Title"] = "Gestion des Reservations";
+    Layout = "_AdminLayout";
+}
+
+<div class="page-header-container">
+    <div class="container-fluid mb-3">
+        <div class="d-flex justify-content-between align-items-center">
+            <h1 class="mb-0">Gestion des Reservations</h1>
+            <a class="btn btn-primary" asp-controller="Reservations" asp-area="Admin" asp-action="Create">
+                <i class="bi bi-plus-lg me-2"></i> Nouvelle Reservation
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid">
+    <div class="table-management">
+        <div class="table-container">
+            <h3 class="mb-3">Liste des Reservations</h3>
+
+            <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                    <thead>
+                        <tr>
+                            <th>Client (Nom / Prénom)</th>
+                            <th>Matricule du Véhicule</th>
+                            <th>Marque et Année</th>
+                            <th>Date de Début</th>
+                            <th>Date de Fin</th>
+                            <th>Prix Unitaire</th>
+                            <th>Prix Total</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var r in Model)
+                        {
+                            <tr>
+                                <td>@r.Client.Nom @r.Client.Prenom</td>
+                                <td>@r.Vehicule.Matricule</td>
+                                <td>@r.Vehicule.Marque - @r.Vehicule.Annee</td>
+                                <td>@r.StartDate.ToString("dd/MM/yyyy")</td>
+                                <td>@r.EndDate.ToString("dd/MM/yyyy")</td>
+                                <td>@r.Vehicule.Prix.ToString("N2") DH</td>
+                                <td>@r.TotalPrice.ToString("N2") DH</td>
+                                <td>
+                                    <a class="btn btn-sm btn-outline-success" title="Modifier" asp-controller="Reservations" asp-area="Admin" asp-action="Edit" asp-route-id="@r.Id">
+                                        <i class="bi bi-pencil-square"></i>
+                                    </a>
+
+                                    @* <a class="btn btn-sm btn-outline-danger" title="Supprimer" asp-controller="Vehicules" asp-area="Admin" asp-action="Delete" asp-route-id="@v.Id" onclick="return confirm('Voulez-vous vraiment supprimer ?')">
+                                        <i class="bi bi-trash"></i>
+                                    </a> *@
+                                    @* <form asp-controller="Reservations" asp-area="Admin" asp-action="Delete" asp-route-id="@r.Id" method="post" style="display:inline">
+                                        <button type="submit" class="btn btn-sm btn-outline-danger" title="Supprimer" onclick="return confirm('Voulez-vous vraiment supprimer ?')">
+                                            <i class="bi bi-trash"></i>
+                                        </button>
+                                    </form> *@
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
