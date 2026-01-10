@@ -1,0 +1,92 @@
+@model GestionLocationVehicule.Models.Client
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Supprimer Client";
+}
+
+
+
+<div class="page-header">
+    <h1 class="mb-0"><i class="bi bi-trash-fill me-3"></i>Supprimer le Client</h1>
+</div>
+
+<div class="delete-container">
+    <div class="delete-icon">
+        <i class="bi bi-exclamation-triangle"></i>
+    </div>
+
+    <div class="warning-box">
+        <i class="bi bi-exclamation-circle-fill"></i>
+        <div class="warning-text">
+            Êtes-vous sûr de vouloir supprimer ce client ? Cette action est irréversible !
+        </div>
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-person"></i> Nom
+        </div>
+        <div class="detail-value">@Model.Nom</div>
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-person-badge"></i> Prénom
+        </div>
+        <div class="detail-value">@Model.Prenom</div>
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-house"></i> Adresse
+        </div>
+        <div class="detail-value">@Model.Adresse</div>
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-geo-alt"></i> Ville
+        </div>
+        <div class="detail-value">@Model.Ville</div>
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-telephone"></i> Numéro de Téléphone
+        </div>
+        <div class="detail-value">@Model.NumeroTelephone</div>
+    </div>
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-envelope"></i> Email
+        </div>
+        <div class="detail-value">@Model.Email</div>
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-shield-lock"></i> Mot de Passe
+        </div>
+        <div class="detail-value">********</div> <!-- Pour ne pas afficher le vrai mot de passe -->
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-person-check"></i> Type d'utilisateur
+        </div>
+        <div class="detail-value">@Model.TypeUtilisateur</div>
+    </div>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="IdClient" />
+        <div class="btn-actions">
+            <button type="submit" class="btn-delete">
+                <i class="bi bi-trash-fill me-2"></i>Confirmer la suppression
+            </button>
+            <a asp-action="Index" class="btn-cancel">
+                <i class="bi bi-x-circle me-2"></i>Annuler
+            </a>
+        </div>
+    </form>
+</div>

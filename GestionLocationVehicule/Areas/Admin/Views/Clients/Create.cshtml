@@ -1,0 +1,153 @@
+@model GestionLocationVehicule.Models.Client
+
+@{
+    var userType = Context.Session.GetString("UserType");
+    var isAdmin = (userType == "Admin");
+
+    if (isAdmin)
+    {
+        Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+        ViewData["Title"] = "Ajouter Client";
+    }
+    else
+    {
+        Layout = "~/Areas/Client/Views/shared/_ClientLayout.cshtml";
+        ViewData["Title"] = "Inscription";
+    }
+}
+
+
+
+<div class="page-header">
+    <h1 class="mb-0">
+        <i class="bi bi-plus-circle-fill me-3"></i>
+        @(isAdmin ? "Ajouter un Nouveau Client" : "Inscription")
+    </h1>
+</div>
+
+<div class="form-container">
+    <form method="post" asp-action="Create">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <div class="form-group">
+            <label asp-for="Nom" class="form-label">
+                <i class="bi bi-person me-2"></i>Nom
+            </label>
+            <input asp-for="Nom" class="form-control" placeholder="Entrez le nom" />
+            <span asp-validation-for="Nom" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Prenom" class="form-label">
+                <i class="bi bi-person-badge me-2"></i>Prénom
+            </label>
+            <input asp-for="Prenom" class="form-control" placeholder="Entrez le prénom" />
+            <span asp-validation-for="Prenom" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Adresse" class="form-label">
+                <i class="bi bi-house me-2"></i>Adresse
+            </label>
+            <input asp-for="Adresse" class="form-control" placeholder="Entrez l'adresse" />
+            <span asp-validation-for="Adresse" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Ville" class="form-label">
+                <i class="bi bi-geo-alt me-2"></i>Ville
+            </label>
+            <input asp-for="Ville" class="form-control" placeholder="Entrez la ville" />
+            <span asp-validation-for="Ville" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NumeroTelephone" class="form-label">
+                <i class="bi bi-telephone me-2"></i>Numéro de Téléphone
+            </label>
+            <input asp-for="NumeroTelephone" class="form-control" placeholder="Entrez le numéro" />
+            <span asp-validation-for="NumeroTelephone" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="form-label">
+                <i class="bi bi-envelope me-2"></i>Email
+            </label>
+            <input asp-for="Email" type="email" class="form-control" placeholder="Entrez l'email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MotDePasse" class="form-label">
+                <i class="bi bi-lock me-2"></i>Mot de Passe
+            </label>
+            <input asp-for="MotDePasse" type="password" class="form-control" placeholder="Entrez le mot de passe" />
+            <span asp-validation-for="MotDePasse" class="text-danger"></span>
+        </div>
+
+        @if (ViewBag.IsAdmin)
+        {
+            <!-- Si c'est un admin, on montre le dropdown -->
+            <div class="form-group">
+                <label asp-for="TypeUtilisateur" class="form-label">
+                    <i class="bi bi-person-check me-2"></i>Type d'utilisateur
+                </label>
+                <select asp-for="TypeUtilisateur" class="form-control" asp-items="@(new List<SelectListItem> {
+                                                                               new SelectListItem { Text = "Client", Value = "Client" },
+                                                                               new SelectListItem { Text = "Admin", Value = "Admin" }
+                                                                           })">
+            </select>
+            <span asp-validation-for="TypeUtilisateur" class="text-danger"></span>
+        </div>
+                }
+        else
+        {
+            <!-- Si ce n'est pas un admin, on met TypeUtilisateur = Client caché -->
+            <input type="hidden" asp-for="TypeUtilisateur" value="Client" />
+        }
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-create">
+                <i class="bi bi-check-circle me-2"></i>@(isAdmin ? "Créer" : "S'inscrire")
+            </button>
+        </div>
+    </form>
+ <div class="form-group text-center mt-4">
+     
+
+        <div class="mt-3">
+            @if (ViewBag.IsAdmin == true)
+            {
+                <a asp-action="Index" class="btn btn-secondary">
+                    <i class="bi bi-arrow-left me-2"></i>Retour à la liste
+                </a>
+            }
+            else
+            {
+                <p class="text-muted small mb-1">Vous avez déjà un compte ?</p>
+                <a asp-area="Admin" asp-controller="Auth" asp-action="Login" class="btn btn-outline-info btn-sm">
+                    <i class="bi bi-box-arrow-in-right me-2"></i>Se connecter
+                </a>
+            }
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

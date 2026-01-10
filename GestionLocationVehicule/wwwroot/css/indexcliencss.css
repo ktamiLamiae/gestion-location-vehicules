@@ -1,0 +1,138 @@
+﻿
+.search-container {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    margin-bottom: 25px;
+}
+
+.search-box {
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 15px;
+    transition: all 0.3s;
+}
+
+    .search-box:focus {
+        border-color: #667eea;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        outline: none;
+    }
+
+.btn-add {
+    background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 10px;
+    font-weight: 600;
+    box-shadow: 0 4px 15px rgba(56, 239, 125, 0.3);
+    transition: all 0.3s;
+}
+
+    .btn-add:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(56, 239, 125, 0.4);
+        color: white;
+    }
+
+    .btn-add:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 20px rgba(56, 239, 125, 0.4);
+        color: white;
+    }
+
+.action-btn {
+    /* 1. Forcer le mode de calcul de taille */
+    box-sizing: border-box;
+    /* 2. Forcer l'affichage en bloc flexible */
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    /* 3. Taille strictement identique */
+    width: 38px !important;
+    height: 38px !important;
+    min-width: 38px; /* Empêche l'écrasement */
+    /* 4. Forme et reset */
+    border-radius: 50%;
+    padding: 0; /* Important : le padding déforme les cercles */
+    border: none;
+    text-decoration: none;
+}
+
+td.text-center {
+    text-align: center;
+    vertical-align: middle;
+    white-space: nowrap; /* Aligne les boutons sur une seule ligne */
+}
+
+.action-btn:hover {
+    transform: translateY(-3px);
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    box-shadow: 0 4px 10px rgba(245, 87, 108, 0.3);
+}
+
+.btn-view {
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    box-shadow: 0 4px 10px rgba(0, 242, 254, 0.3);
+}
+
+.btn-delete {
+    background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+    box-shadow: 0 4px 10px rgba(250, 112, 154, 0.3);
+}
+
+.page-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px;
+    border-radius: 15px;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    .table-container
+
+{
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+}
+
+.custom-table {
+    margin: 0;
+}
+
+    .custom-table thead {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+    }
+
+        .custom-table thead th {
+            padding: 18px 15px;
+            font-weight: 600;
+            border: none;
+            letter-spacing: 0.5px;
+        }
+
+    .custom-table tbody tr {
+        transition: all 0.3s;
+        border-bottom: 1px solid #f0f0f0;
+    }
+
+        .custom-table tbody tr:hover {
+            background: #f8f9ff;
+            transform: scale(1.01);
+            box-shadow: 0 2px 8px rgba(102, 126, 234, 0.1);
+        }
+
+    .custom-table tbody td {
+        padding: 15px;
+        vertical-align: middle;
+    }
+
+

@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - RapidRide</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
+    <link rel="stylesheet" href="~/css/clientcss.css" />
+    <link rel="stylesheet" href="~/css/deleteclientcss.css" />
+
+    <style>
+        body {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .navbar-top {
+            background: white;
+            padding: 15px 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-size: 24px;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .user-info {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .content-container {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar-top">
+        <div class="brand">
+            <i class="bi bi-car-front-fill me-2"></i> RapidRide
+        </div>
+        <div class="user-info">
+            @if (!string.IsNullOrEmpty(Context.Session.GetString("UserNom")))
+            {
+                <span>
+                    <i class="bi bi-person-circle me-2"></i>
+                    @Context.Session.GetString("UserNom")
+                </span>
+                <a href="/Admin/Auth/Logout" class="btn btn-sm btn-outline-danger">
+                    <i class="bi bi-box-arrow-right"></i> Déconnexion
+                </a>
+            }
+        </div>
+    </div>
+
+   
+
+    <div class="content-container">
+        @RenderBody()
+    </div>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

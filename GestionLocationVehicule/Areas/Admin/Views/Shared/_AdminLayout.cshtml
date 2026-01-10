@@ -7,6 +7,14 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/lib/bootstrap-icons/font/bootstrap-icons.css" />
     <link rel="stylesheet" href="~/css/admin.css" />
+    <link rel="stylesheet" href="~/css/clientcss.css" />
+    <link rel="stylesheet" href="~/css/editclientcss.css" />
+    <link rel="stylesheet" href="~/css/detailsclientcss.css" />
+    <link rel="stylesheet" href="~/css/deleteclientcss.css" />
+    <link rel="stylesheet" href="~/css/indexcliencss.css" />
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+    
 </head>
 <body>
 
@@ -29,16 +37,23 @@
 
     <nav class="navbar navbar-top">
         <div class="container-fluid">
-            <form class="d-flex">
-                <input class="form-control me-2" type="search" placeholder="Rechercher une location..." aria-label="Search">
+            <form asp-area="Admin" asp-controller="Auth" asp-action="Logout" method="post" id="logoutForm">
+                <button type="submit" class="nav-link btn btn-link text-dark">
+                    Se déconnecter
+                </button>
             </form>
-            <div class="d-flex align-items-center">
-                <button class="btn btn-outline-secondary me-3"><i class="bi bi-bell"></i></button>
-                <span class="me-3 d-none d-md-inline">Admin (John Doe)</span>
-                <img src="https://via.placeholder.com/40/007BFF/FFFFFF?text=JD" alt="User Avatar" class="rounded-circle">
-            </div>
+            <span class="me-3 d-none d-md-inline">
+                @Context.Session.GetString("UserNom") (@Context.Session.GetString("UserEmail"))
+            </span>
+
         </div>
     </nav>
+
+    <form asp-area="Admin" asp-controller="Auth" asp-action="Logout" method="post" id="logoutForm">
+        <button type="submit" class="nav-link btn btn-link text-dark">
+            Se déconnecter
+        </button>
+    </form>
 
     <main class="main-content">
         @RenderBody()

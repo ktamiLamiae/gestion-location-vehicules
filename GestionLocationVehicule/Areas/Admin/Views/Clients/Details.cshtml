@@ -1,0 +1,83 @@
+@model GestionLocationVehicule.Models.Client
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Détails Client";
+}
+
+
+
+<div class="page-header">
+    <h1 class="mb-0"><i class="bi bi-info-circle me-3"></i>Détails du Client</h1>
+</div>
+
+<div class="details-container">
+    <div class="client-avatar">
+        <i class="bi bi-person-fill"></i>
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-person"></i> Nom
+        </div>
+        <div class="detail-value">@Model.Nom</div>
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-person-badge"></i> Prénom
+        </div>
+        <div class="detail-value">@Model.Prenom</div>
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-house"></i> Adresse
+        </div>
+        <div class="detail-value">@Model.Adresse</div>
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-geo-alt"></i> Ville
+        </div>
+        <div class="detail-value">@Model.Ville</div>
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-telephone"></i> Numéro de Téléphone
+        </div>
+        <div class="detail-value">@Model.NumeroTelephone</div>
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-envelope"></i> Email
+        </div>
+        <div class="detail-value">@Model.Email</div>
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-shield-lock"></i> Mot de Passe
+        </div>
+        <div class="detail-value">********</div>
+    </div>
+
+    <div class="detail-card">
+        <div class="detail-label">
+            <i class="bi bi-person-check"></i> Type d'utilisateur
+        </div>
+        <div class="detail-value">@Model.TypeUtilisateur</div>
+    </div>
+
+    <div class="btn-actions">
+        <a asp-action="Edit" asp-route-id="@Model.IdClient" class="btn-edit">
+            <i class="bi bi-pencil-square me-2"></i>Modifier
+        </a>
+        <a asp-action="Index" class="btn-back">
+            <i class="bi bi-arrow-left me-2"></i>Retour à la liste
+        </a>
+    </div>
+</div>

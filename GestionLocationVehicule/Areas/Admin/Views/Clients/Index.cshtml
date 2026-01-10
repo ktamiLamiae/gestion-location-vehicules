@@ -1,0 +1,97 @@
+@model IEnumerable<GestionLocationVehicule.Models.Client>
+
+@{
+    ViewData["Title"] = "Index";
+}
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="page-header">
+    <h1 class="mb-0"><i class="bi bi-people-fill me-3"></i>Gestion des Clients</h1>
+</div>
+ 
+
+
+<div class="search-container">
+    <div class="row align-items-center">
+        <div class="col-md-8">
+            <input type="text" id="searchInput" class="form-control search-box"
+                   placeholder=" Rechercher par nom, prénom ou ville..."
+                   onkeyup="searchClients()" />
+        </div>
+        <script>
+            function searchClients() {
+                var input = document.getElementById("searchInput");
+                var filter = input.value.toUpperCase();
+                var table = document.querySelector(".custom-table");
+                var tr = table.getElementsByTagName("tr");
+
+                for (var i = 1; i < tr.length; i++) {
+                    var td = tr[i].getElementsByTagName("td");
+                    var found = false;
+
+                    for (var j = 0; j < td.length - 1; j++) {
+                        if (td[j]) {
+                            var txtValue = td[j].textContent || td[j].innerText;
+                            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                                found = true;
+                                break;
+                            }
+                        }
+                    }
+
+                    tr[i].style.display = found ? "" : "none";
+                }
+            }
+        </script>
+
+        <div class="col-md-4 text-end">
+            <a asp-action="Create" class="btn btn-add">
+                <i class="bi bi-plus-circle-fill me-2"></i> Nouveau Client
+            </a>
+        </div>
+    </div>
+</div>
+<div class="table-container">
+    <table class="table custom-table table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>@Html.DisplayNameFor(model => model.Nom)</th>
+                <th>@Html.DisplayNameFor(model => model.Prenom)</th>
+                <th>@Html.DisplayNameFor(model => model.Adresse)</th>
+                <th>@Html.DisplayNameFor(model => model.Ville)</th>
+                <th>@Html.DisplayNameFor(model => model.NumeroTelephone)</th>
+                <th>@Html.DisplayNameFor(model => model.Email)</th>
+                <th>Type d'utilisateur</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nom)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Prenom)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Adresse)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Ville)</td>
+                    <td>@Html.DisplayFor(modelItem => item.NumeroTelephone)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Email)</td>
+                    <td>@Html.DisplayFor(modelItem => item.TypeUtilisateur)</td>
+                    <td class="text-center">
+                        <a asp-action="Edit" asp-route-id="@item.IdClient" class="action-btn btn-edit" title="Modifier">
+                            <i class="bi bi-pencil-fill text-white"></i>
+                        </a>
+                        <a asp-action="Details" asp-route-id="@item.IdClient" class="action-btn btn-view" title="Détails">
+                            <i class="bi bi-eye-fill text-white"></i>
+                        </a>
+                        <a asp-action="Delete" asp-route-id="@item.IdClient" class="action-btn btn-delete" title="Supprimer">
+                            <i class="bi bi-trash-fill text-white"></i>
+                        </a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+</table>
+</div>
+

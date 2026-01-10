@@ -1,0 +1,177 @@
+@model GestionLocationVehicule.Models.Client
+
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+    ViewData["Title"] = "Modifier Client";
+}
+
+<style>
+    .page-header {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 30px;
+        border-radius: 15px;
+        margin-bottom: 30px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    }
+
+    .form-container {
+        background: white;
+        padding: 40px;
+        border-radius: 15px;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        max-width: 600px;
+        margin: 0 auto;
+    }
+
+    .form-group {
+        margin-bottom: 25px;
+    }
+
+    .form-label {
+        font-weight: 600;
+        color: #333;
+        margin-bottom: 8px;
+        display: block;
+    }
+
+    .form-control {
+        border: 2px solid #e0e0e0;
+        border-radius: 10px;
+        padding: 12px 15px;
+        font-size: 15px;
+        transition: all 0.3s;
+    }
+
+        .form-control:focus {
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            outline: none;
+        }
+
+    .btn-save-edit {
+        background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
+        color: white;
+        border: none;
+        padding: 12px 40px;
+        border-radius: 10px;
+        font-weight: 600;
+        font-size: 16px;
+        box-shadow: 0 4px 15px rgba(56, 239, 125, 0.3);
+        transition: all 0.3s;
+        width: 100%; /* ici on garde pour Edit */
+    }
+
+        .btn-save-edit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(56, 239, 125, 0.4);
+            color: white;
+        }
+
+    .btn-back-edit {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        padding: 10px 30px;
+        border-radius: 10px;
+        font-weight: 600;
+        text-decoration: none;
+        display: inline-block;
+        transition: all 0.3s;
+        box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+    }
+
+        .btn-back-edit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+            color: white;
+        }
+
+    .text-danger {
+        color: #dc3545;
+        font-size: 14px;
+        margin-top: 5px;
+    }
+
+  
+</style>
+
+<div class="page-header">
+    <h1 class="mb-0"><i class="bi bi-pencil-square me-3"></i>Modifier Client</h1>
+</div>
+
+<div class="form-container">
+    <form asp-action="Edit">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+        <input type="hidden" asp-for="IdClient" />
+
+        <div class="form-group">
+            <label asp-for="Nom" class="form-label"><i class="bi bi-person me-2"></i>Nom</label>
+            <input asp-for="Nom" class="form-control" placeholder="Entrez le nom" />
+            <span asp-validation-for="Nom" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Prenom" class="form-label"><i class="bi bi-person-badge me-2"></i>Prénom</label>
+            <input asp-for="Prenom" class="form-control" placeholder="Entrez le prénom" />
+            <span asp-validation-for="Prenom" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Adresse" class="form-label"><i class="bi bi-house me-2"></i>Adresse</label>
+            <input asp-for="Adresse" class="form-control" placeholder="Entrez l'adresse" />
+            <span asp-validation-for="Adresse" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Ville" class="form-label"><i class="bi bi-geo-alt me-2"></i>Ville</label>
+            <input asp-for="Ville" class="form-control" placeholder="Entrez la ville" />
+            <span asp-validation-for="Ville" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NumeroTelephone" class="form-label"><i class="bi bi-telephone me-2"></i>Numéro de Téléphone</label>
+            <input asp-for="NumeroTelephone" class="form-control" placeholder="Entrez le numéro" />
+            <span asp-validation-for="NumeroTelephone" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="form-label"><i class="bi bi-envelope me-2"></i>Email</label>
+            <input asp-for="Email" class="form-control" placeholder="Entrez l'email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="MotDePasse" class="form-label"><i class="bi bi-shield-lock me-2"></i>Mot de Passe</label>
+            <input asp-for="MotDePasse" class="form-control" type="password" placeholder="Entrez le mot de passe" />
+            <span asp-validation-for="MotDePasse" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="TypeUtilisateur" class="form-label"><i class="bi bi-person-check me-2"></i>Type d'utilisateur</label>
+            <select asp-for="TypeUtilisateur" class="form-control">
+                <option value="Client" selected="@Model.TypeUtilisateur == " Client"">Client</option>
+                <option value="Admin" selected="@Model.TypeUtilisateur == " Admin"">Admin</option>
+            </select>
+            <span asp-validation-for="TypeUtilisateur" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn-save-edit">
+                <i class="bi bi-check-circle me-2"></i>Enregistrer
+            </button>
+        </div>
+    </form>
+
+  <div class="text-center mt-3">
+    <a asp-action="Index" class="btn-back-edit">
+        <i class="bi bi-arrow-left me-2"></i>Retour à la liste
+    </a>
+</div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}
