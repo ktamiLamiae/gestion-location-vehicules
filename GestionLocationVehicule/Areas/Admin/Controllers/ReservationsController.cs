@@ -97,5 +97,123 @@ namespace GestionLocationVehicule.Areas.Admin.Controllers
 
             return View(reservations);
         }
+
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+            var reservation = context.Reservations
+                .Include(r => r.Client)
+                .Include(r => r.Vehicule)
+                .FirstOrDefault(r => r.Id == id);
+
+            if (reservation == null)
+                return NotFound();
+
+            return View(reservation);
+        }
+
+        [HttpGet]
+        public IActionResult Edit(int id)
+        {
+            var reservation = context.Reservations.Find(id);
+            if (reservation == null)
+                return NotFound();
+
+            ViewBag.Vehicules = context.Vehicules.ToList();
+            ViewBag.Clients = context.Clients.ToList();
+
+            return View(reservation);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(int id, int ClientId, int VehiculeId, DateTime startDate, DateTime endDate, ReservationStatut statut)
+        {
+            var reservation = context.Reservations
+                .Include(r => r.Vehicule)
+                .FirstOrDefault(r => r.Id == id);
+
+            if (reservation == null)
+                return NotFound();
+
+            reservation.ClientId = ClientId;
+            reservation.VehiculeId = VehiculeId;
+            reservation.StartDate = startDate;
+            reservation.EndDate = endDate;
+            reservation.Statut = statut;
+            reservation.TotalPrice = CalculerPrixTotal(startDate, endDate, reservation.Vehicule.Prix);
+
+            context.SaveChanges();
+
+            return RedirectToAction(nameof(ListReservations));
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            var reservation = context.Reservations
+                .Include(r => r.Client)
+                .Include(r => r.Vehicule)
+                .FirstOrDefault(r => r.Id == id);
+
+            if (reservation == null)
+                return NotFound();
+
+            return View(reservation);
+        }
+
+        [HttpPost, ActionName("Delete")]
+        public IActionResult DeleteConfirmed(int id)
+        {
+            var reservation = context.Reservations
+                .Include(r => r.Vehicule)
+                .FirstOrDefault(r => r.Id == id);
+
+            if (reservation == null)
+                return NotFound();
+
+            reservation.Vehicule.Statut = Statut.Disponible;
+            context.Reservations.Remove(reservation);
+            context.SaveChanges();
+
+            return RedirectToAction(nameof(ListReservations));
+        }
+
+        [HttpPost]
+        public IActionResult Cancel(int id)
+        {
+            var reservation = context.Reservations
+                .Include(r => r.Vehicule)
+                .FirstOrDefault(r => r.Id == id);
+
+            if (reservation == null)
+                return NotFound();
+
+            reservation.Statut = ReservationStatut.Cancelled;
+            reservation.Vehicule.Statut = Statut.Disponible;
+
+            context.SaveChanges();
+
+            return RedirectToAction(nameof(ListReservations));
+        }
+
+        [HttpPost]
+        public IActionResult Complete(int id)
+        {
+            var reservation = context.Reservations
+                .Include(r => r.Vehicule)
+                .FirstOrDefault(r => r.Id == id);
+
+            if (reservation == null)
+                return NotFound();
+
+            reservation.Statut = ReservationStatut.Completed;
+            reservation.Vehicule.Statut = Statut.Disponible;
+
+            context.SaveChanges();
+
+            return RedirectToAction(nameof(ListReservations));
+        }
+
     }
 }
